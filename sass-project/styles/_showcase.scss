@@ -1,0 +1,90 @@
+@import "color";
+@import "constants";
+@import "media-queries";
+
+%before-after-case {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0;
+  top: 0;
+  background-color: $orangeRed;
+  transition: 0.3s;
+  border-radius: $borderRadius;
+}
+
+.showcase_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  &_left {
+    margin-top: 20px;
+    flex-basis: 45%;
+
+    h1 {
+      font-size: 50px;
+      color: $lime;
+
+      @include tablet {
+        font-size: 40px;
+      }
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &-signup {
+      font-size: 1rem;
+      background-color: $lime;
+      padding: 15px 30px;
+      border: none;
+      border-radius: $borderRadius;
+      margin-top: 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s;
+      outline: none;
+
+      a {
+        color: $light;
+        z-index: 2;
+        position: relative;
+        text-decoration: none;
+        font-size: 20px;
+      }
+
+      &::after {
+        right: 50%;
+        @extend %before-after-case;
+      }
+      &::before {
+        left: 50%;
+        @extend %before-after-case;
+      }
+
+      &:hover::after {
+        width: 50%;
+      }
+      &:hover::before {
+        width: 50%;
+      }
+    }
+  }
+
+  &_right {
+    flex-basis: 45%;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
